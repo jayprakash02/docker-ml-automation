@@ -1,9 +1,11 @@
 <!-- vim-markdown-toc -->
 
 ## Folder structure
-    ├── app                                 # Django app
+    ├── backend                             # backend 
+        ├── app                             # django project
         ├── core                            # core app for models
-        ├── logging                         # logging and prediction 
+        ├── dashboard                       # App for templates, prediction and logs
+        ├── leaning                         # testing and learning for final dashboard
         └── Dockerfile                      # Django Dockerfile
     ├── tf-server                           # Custom tensorflow/serving image
     └── docker-compose.yml                  # Runs Everything
@@ -15,11 +17,11 @@
 
 Docker build command for tf-serve
 ```bash
-docker build -t object-detect ./tf-serve
+docker build -t tensorflow-serving ./tf-serve
 ```
 Docker run command for tf-serve
 ```bash
-docker run --name object-detect -h 0.0.0.0 --network="host" --rm -d object-detect:latest
+docker run --name object-detect -h 0.0.0.0 --network="host" --rm -d tensorflow-serving:latest
 ```
 Sample Url
 ```bash

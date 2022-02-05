@@ -7,4 +7,12 @@ model_config_list {
         all: {}
     }
   }
+  config {
+    name: 'linear_model'
+    base_path: '/models/linear_model/'
+    model_platform: "tensorflow"
+    model_version_policy: {
+        all: {}
+    }
+  }
 }

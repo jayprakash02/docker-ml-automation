@@ -1,6 +1,5 @@
 FROM tensorflow/serving
 
-MAINTAINER "Lander Moerkerke"
 
 LABEL version="1.0.1"
 LABEL description="Deploy TF models by directory"

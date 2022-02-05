@@ -21,7 +21,7 @@ docker build -t tensorflow-serving ./tf-serve
 ```
 Docker run command for tf-serve
 ```bash
-docker run --name object-detect -h 0.0.0.0 --network="host" --rm -d tensorflow-serving:latest
+docker run --name tensorflow-serving -h 0.0.0.0 --network="host" --rm -d tensorflow-serving:latest
 ```
 Sample Url
 ```bash

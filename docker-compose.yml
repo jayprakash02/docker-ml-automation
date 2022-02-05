@@ -2,15 +2,19 @@ version: '3.3'
 
 services: 
     app:
+        image: backend:latest
         build:
             context: ./backend
         ports:
             - "8000:8000"
         volumes:
             - ./backend:/app/backend/
-        command: >
-            sh -c "python manage.py migrate --no-input &&  
-            python manage.py runserver 0.0.0.0"
         #env_file:
             #- ./docker/docker.app.env
+    tf-serving:
+        image: tensorflow-serving:latest
+        ports:
+          - "8500:8500"
+          - "8501:8501"
+        network_mode: "host"
         

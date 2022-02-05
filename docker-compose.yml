@@ -1,0 +1,16 @@
+version: '3.7'
+
+services: 
+    app:
+        build:
+            context: ./backend
+        ports:
+            - "8000:8000"
+        volumes:
+            - ./backend:/app/backend/
+        command: >
+            sh -c "python manage.py migrate --no-input &&  
+            python manage.py runserver 0.0.0.0"
+        #env_file:
+            #- ./docker/docker.app.env
+        

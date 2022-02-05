@@ -11,5 +11,4 @@ RUN pip3 install -r /app/backend/requirements.txt --no-cache-dir
 COPY . .
 
 ENV PORT 8000
-# CMD python manage.py migrate --no-input
-CMD python3 manage.py runserver 0.0.0.0:$PORT
+CMD python3 manage.py migrate --no-input && python3 manage.py runserver 0.0.0.0:$PORT

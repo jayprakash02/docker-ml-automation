@@ -9,5 +9,6 @@ class UploadView(FormView):
     success_url = '/'
 
     def form_valid(self, form):
-        form.save()
+        # form.save()
+        print("Sucessfully uploaded file")
         return super().form_valid(form)

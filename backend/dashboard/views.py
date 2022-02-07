@@ -1,11 +1,13 @@
 from django.shortcuts import render
-from django.views.generic import TemplateView
+from django.views.generic import FormView
+from .forms import UploadZipFileForm
 
 
-class UploadView(TemplateView):
+class UploadView(FormView):
     template_name = 'dashboard/index.html'
+    form_class = UploadZipFileForm
+    success_url = '/'
 
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        context['title'] = 'Upload'
-        return context
+    def form_valid(self, form):
+        form.save()
+        return super().form_valid(form)

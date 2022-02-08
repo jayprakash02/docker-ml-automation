@@ -1,6 +1,9 @@
 from django.shortcuts import render
 from django.views.generic import FormView
+from django.http import HttpResponseRedirect
+from django.shortcuts import render
 from .forms import UploadZipFileForm
+from .models import handle_uploaded_file
 
 
 class UploadView(FormView):
@@ -8,7 +11,12 @@ class UploadView(FormView):
     form_class = UploadZipFileForm
     success_url = '/'
 
-    def form_valid(self, form):
-        # form.save()
-        print("Sucessfully uploaded file")
-        return super().form_valid(form)
+    def upload_file(request):
+        if request.method == 'POST':
+            form = UploadZipFileForm(request.POST, request.FILES)
+            if form.is_valid():
+                handle_uploaded_file(request.FILES['file'])
+                return HttpResponseRedirect('/success/url/')
+        else:
+            form = UploadZipFileForm()
+        return render(request, 'upload.html', {'form': form})

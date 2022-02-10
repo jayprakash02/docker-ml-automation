@@ -28,7 +28,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
     'core',
-    'dashboard'
+    'dashboard',
+    'zipfile'
 ]
 
 MIDDLEWARE = [
